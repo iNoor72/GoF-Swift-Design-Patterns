@@ -9,7 +9,6 @@ import Darwin
 //1. Singleton
 
     //Implementation
-
 class Singleton {
     static let sharedInstance = Singleton()
     private init() {}
@@ -31,7 +30,6 @@ Singleton.sharedInstance.printingFunction()
 //2. Factory Method
 
     //Implementation
-
 protocol Factory {
     func buildCar() -> Car
 }
@@ -52,7 +50,6 @@ class MercedesFactory: Factory {
         print("Mercedes is built!")
         return car
     }
-    
 }
 
 
@@ -71,6 +68,7 @@ class BMW: Car {
         print("I'm driving my BMW 🚗")
     }
 }
+
 
     //Calling
 let factory = BMWFactory()
