@@ -5,10 +5,9 @@ import Darwin
 
 //Creational Design Patterns
 
-
 //1. Singleton
 
-    //Implementation
+//Implementation
 class Singleton {
     static let sharedInstance = Singleton()
     private init() {}
@@ -18,18 +17,18 @@ class Singleton {
     }
 }
 
-    //Calling
-    //(1)
+//Calling
+//(1)
 let mySingleton = Singleton.sharedInstance
 mySingleton.printingFunction()
 
-    //(2)
+//(2)
 Singleton.sharedInstance.printingFunction()
 
 
 //2. Factory Method
 
-    //Implementation
+//Implementation
 protocol Factory {
     func buildCar() -> Car
 }
@@ -70,7 +69,7 @@ class BMW: Car {
 }
 
 
-    //Calling
+//Calling
 let factory = BMWFactory()
 let car = factory.buildCar()
 car.drive()
@@ -78,3 +77,108 @@ car.drive()
 let anotherFactory = MercedesFactory()
 let anotherCar = anotherFactory.buildCar()
 anotherCar.drive()
+
+
+//3. Abstract Factory
+
+//Implementation
+protocol AbstarctFactory {
+    func buildChair() -> Furniture
+}
+
+class ClassicFurnitureFactory: AbstarctFactory {
+    func buildChair() -> Furniture {
+        print("Building Classic Chair...")
+        let chair = ClassicChair()
+        print("Classic Chair is built!")
+        return chair
+    }
+}
+
+class ModernFurnitureFactory: AbstarctFactory {
+    func buildChair() -> Furniture {
+        print("Building Modern Chair...")
+        let chair = ModernChair()
+        print("Modern Chair is built!")
+        return chair
+    }
+}
+
+
+protocol Furniture {
+    func sit()
+}
+
+class ClassicChair: Furniture {
+    func sit() {
+        print("Classic Chairs Feels Royal!")
+    }
+}
+
+class ModernChair: Furniture {
+    func sit() {
+        print("Modern Chairs Feels Comfy!")
+    }
+}
+
+//Calling
+
+let classicFactory = ClassicFurnitureFactory()
+let chair = classicFactory.buildChair()
+chair.sit()
+
+let modernFactory = ModernFurnitureFactory()
+let anotherChair = modernFactory.buildChair()
+anotherChair.sit()
+
+
+
+
+//4. Builder
+
+//Implementation
+
+protocol Builder {
+    
+}
+
+class Director {
+    var builder: Builder
+    
+    init(builder: Builder) {
+        self.builder = builder
+    }
+}
+
+
+//5. Prototype
+
+//Implementation
+
+protocol Prototype {
+    func clone()
+}
+
+
+
+
+
+
+//6. Object Pool
+
+//Implementation
+class ObjectPool {
+    let objects: [Object] = [Object(), Object(), Object()]
+    
+    func acquire() {
+        
+    }
+    
+    func release() {
+        
+    }
+}
+
+class Object {
+    
+}
