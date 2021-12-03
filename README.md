@@ -3,15 +3,15 @@
 This repo is intended to implement the known Software Design Patterns from the Gang of Four book using Swift Programming Languages.
 We have 3 types of Design Patterns:
 
-# 1. Creational Design Patterns
+# 1. Creational Design Patterns 
 That includes:
 <ul>
-<li> Singleton Design Pattern </li>
-<li> Factory Method Design Pattern </li>
-<li> Abstract Factory Design Pattern </li>
-<li> Builder Design Pattern </li>
-<li> Prototype Design Pattern </li>
-<li> Object-Pool Design Pattern </li>
+<li> Singleton Design Pattern (Done ✅)</li>
+<li> Factory Method Design Pattern (Done ✅)</li>
+<li> Abstract Factory Design Pattern (Done ✅)</li>
+<li> Builder Design Pattern (Done ✅)</li>
+<li> Prototype Design Pattern (In progress ⏳)</li>
+<li> Object-Pool Design Pattern (In progress ⏳)</li>
 </ul>
 
 # 2. Structural Design Patterns
@@ -26,7 +26,7 @@ That includes:
 <li> Decorator Design Pattern </li>
 </ul>
 
-# 3. Behavioral Design Patterns
+# 3. Behavioral Design Patterns 
 That includes:
 <ul>
 <li> Chain of Responsibility Design Pattern </li>
