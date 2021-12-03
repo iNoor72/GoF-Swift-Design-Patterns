@@ -132,24 +132,113 @@ let anotherChair = modernFactory.buildChair()
 anotherChair.sit()
 
 
-
-
 //4. Builder
 
 //Implementation
 
-protocol Builder {
+protocol MoldBuilder {
+    func buildHead() -> Parts
+    func buildBody() -> Parts
+    func buildArms() -> Parts
+    func buildLegs() -> Parts
+    func glue() -> MoldProducts
+}
+
+class AnimalBuilder: MoldBuilder {
+    func buildHead() -> Parts{
+        return Head()
+    }
+    
+    func buildBody() -> Parts{
+        return Body()
+    }
+    
+    func buildArms() -> Parts{
+        return Arms()
+    }
+    
+    func buildLegs() -> Parts{
+        return Legs()
+    }
+    
+    func glue() -> MoldProducts {
+        print("Head is building")
+        let head = buildHead()
+        
+        print("Body is building")
+        let body = buildBody()
+        
+        print("Arms are building")
+        let arms = buildArms()
+        
+        print("Legs are building")
+        let legs = buildLegs()
+        
+        print("Gluing the product...")
+        let product = Animal(parts: head, body, arms, legs)
+        print("Product is build!")
+        return product
+    }
     
 }
 
 class Director {
-    var builder: Builder
+    var builder: MoldBuilder
     
-    init(builder: Builder) {
+    init(builder: MoldBuilder) {
         self.builder = builder
+    }
+    
+    func construct() -> MoldProducts{
+        builder.buildHead()
+        builder.buildBody()
+        builder.buildArms()
+        builder.buildLegs()
+        return builder.glue()
     }
 }
 
+protocol Parts {
+    
+}
+
+class Head: Parts {
+    
+}
+
+class Body: Parts {
+    
+}
+
+class Arms: Parts {
+    
+}
+
+class Legs: Parts {
+    
+}
+protocol MoldProducts {
+    var parts: [Parts] { get set }
+    func makeASound()
+}
+
+class Animal: MoldProducts {
+    var parts : [Parts]
+    
+    init(parts: Parts...) {
+        self.parts = parts
+    }
+    
+    func makeASound() {
+        print("Meow!")
+    }
+}
+
+    //Using
+let builder = AnimalBuilder()
+let director = Director(builder: builder)
+let product = director.construct()
+product.makeASound()
 
 //5. Prototype
 
