@@ -249,10 +249,6 @@ protocol Prototype {
 }
 
 
-
-
-
-
 //6. Object Pool
 
 //Implementation
