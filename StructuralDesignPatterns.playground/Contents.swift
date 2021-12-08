@@ -126,3 +126,91 @@ facade.fetchFromDB()
 
 let anotherFacade = AnotherFacade(data: "Noor's data")
 anotherFacade.myPrint()
+
+//3. Composite
+
+    //Implementation
+
+protocol ScreenDrawer {
+    var resolution: Int { get set }
+    func draw()
+    
+}
+
+class Image: ScreenDrawer {
+    var resolution: Int
+    var children: [ScreenDrawer]
+    
+    init(children: [ScreenDrawer], res: Int) {
+        self.children = children
+        self.resolution = res
+    }
+    
+    init() {
+        self.children = [ScreenDrawer]()
+        self.resolution = 0
+    }
+
+    func addChild(child: ScreenDrawer) {
+        self.children.append(child)
+    }
+    func removeChild(child: ScreenDrawer) {
+        if children.isEmpty == false {
+            for (index, item) in children.enumerated() {
+                if item.resolution == child.resolution { //Implement any type of comparison
+                    children.remove(at: index)
+                }
+            }
+        }
+        else {
+            print("Array is empty")
+        }
+    }
+    func getChild(in index: Int) -> ScreenDrawer {
+        if children.isEmpty == false {
+            let child: ScreenDrawer? = children[index]
+            if child != nil {
+                print(child!)
+                return child!
+            }
+            else {
+                print("Item not found")
+            }
+        }
+        else {
+            print("Array is empty")
+        }
+        return Pixel(res: 0)
+    }
+    
+    func draw() {
+        for child in children {
+            child.draw()
+        }
+    }
+}
+
+class Pixel: ScreenDrawer {
+    var resolution: Int
+    
+    init(res: Int) {
+        self.resolution = res
+    }
+    
+    func draw() {
+        print("Drawing pixel...")
+    }
+}
+
+    //Using
+let pixel = Pixel(res: 100)
+let anotherPixel = Pixel(res: 200)
+let composite = Image(children: [pixel, anotherPixel], res: pixel.resolution + anotherPixel.resolution)
+let anotherComposite = Image()
+composite.draw()
+
+composite.removeChild(child: pixel)
+print(composite.children.count)
+
+anotherComposite.addChild(child: pixel)
+print(anotherComposite.children.count)
