@@ -17,11 +17,11 @@ That includes:
 # 2. Structural Design Patterns
 That includes:
 <ul>
-<li> Adapter Design Pattern </li>
-<li> Bridge Method Design Pattern </li>
-<li> Composite Factory Design Pattern </li>
+<li> Adapter Design Pattern (Done ✅)</li>
+<li> Facade Method Design Pattern (Done ✅)</li>
+<li> Composite Factory Design Pattern (In progress ⏳)</li>
 <li> Flyweight Design Pattern </li>
-<li> Facade Design Pattern </li>
+<li> Bridge Design Pattern </li>
 <li> Proxy Design Pattern </li>
 <li> Decorator Design Pattern </li>
 </ul>
