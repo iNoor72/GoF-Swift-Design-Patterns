@@ -10,8 +10,8 @@ That includes:
 <li> Factory Method Design Pattern (Done ✅)</li>
 <li> Abstract Factory Design Pattern (Done ✅)</li>
 <li> Builder Design Pattern (Done ✅)</li>
-<li> Prototype Design Pattern (In progress ⏳)</li>
-<li> Object-Pool Design Pattern (In progress ⏳)</li>
+<li> Prototype Design Pattern (Done ✅)</li>
+<li> Object-Pool Design Pattern (Done ✅)</li>
 </ul>
 
 # 2. Structural Design Patterns
