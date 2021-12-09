@@ -1,6 +1,6 @@
 # GoF-Swift-Design-Patterns
 
-This repo is intended to implement the known Software Design Patterns from the Gang of Four book using Swift Programming Languages.
+I created this repo to implement the known Software Design Patterns from the Gang of Four book using Swift Programming Languages.
 We have 3 types of Design Patterns:
 
 # 1. Creational Design Patterns 
