@@ -11,7 +11,7 @@ import Darwin
 class Singleton {
     static let sharedInstance = Singleton()
     private init() {}
-    
+
     func printingFunction() {
         print("Hello, I'm a singleton, and this is how to use me to call other functions inside me")
     }
@@ -148,47 +148,47 @@ class AnimalBuilder: MoldBuilder {
     func buildHead() -> Parts{
         return Head()
     }
-    
+
     func buildBody() -> Parts{
         return Body()
     }
-    
+
     func buildArms() -> Parts{
         return Arms()
     }
-    
+
     func buildLegs() -> Parts{
         return Legs()
     }
-    
+
     func glue() -> MoldProducts {
         print("Head is building")
         let head = buildHead()
-        
+
         print("Body is building")
         let body = buildBody()
-        
+
         print("Arms are building")
         let arms = buildArms()
-        
+
         print("Legs are building")
         let legs = buildLegs()
-        
+
         print("Gluing the product...")
         let product = Animal(parts: head, body, arms, legs)
         print("Product is build!")
         return product
     }
-    
+
 }
 
 class Director {
     var builder: MoldBuilder
-    
+
     init(builder: MoldBuilder) {
         self.builder = builder
     }
-    
+
     func construct() -> MoldProducts{
         builder.buildHead()
         builder.buildBody()
@@ -199,23 +199,23 @@ class Director {
 }
 
 protocol Parts {
-    
+
 }
 
 class Head: Parts {
-    
+
 }
 
 class Body: Parts {
-    
+
 }
 
 class Arms: Parts {
-    
+
 }
 
 class Legs: Parts {
-    
+
 }
 protocol MoldProducts {
     var parts: [Parts] { get set }
@@ -224,11 +224,11 @@ protocol MoldProducts {
 
 class Animal: MoldProducts {
     var parts : [Parts]
-    
+
     init(parts: Parts...) {
         self.parts = parts
     }
-    
+
     func makeASound() {
         print("Meow!")
     }
@@ -240,30 +240,83 @@ let director = Director(builder: builder)
 let product = director.construct()
 product.makeASound()
 
+
 //5. Prototype
 
 //Implementation
 
 protocol Prototype {
-    func clone()
+    func clone() -> Prototype
 }
+
+class BaseClass: Prototype, Equatable {
+    var value: String
+    var number: Int
+    
+    required init(value: String = "" , number: Int = 0) {
+        self.value = value
+        self.number = number
+    }
+    
+    
+    func clone() -> Prototype {
+        let prototype = type(of: self).init()
+        prototype.value = self.value
+        prototype.number = self.number
+        print("You have a clone now!")
+        
+        return prototype
+    }
+    
+    static func == (lhs: BaseClass, rhs: BaseClass) -> Bool {
+        if type(of: lhs) == type(of: rhs) && lhs.value == lhs.value {
+            return true
+        }
+        return false
+    }
+    
+}
+
+    //Using
+
+let obj = BaseClass(value: "Noor", number: 3)
+let proto = obj.clone()
 
 
 //6. Object Pool
 
 //Implementation
-class ObjectPool {
-    let objects: [Object] = [Object(), Object(), Object()]
+
+//Note: ObjectPools must be handled using semaphores to be protected when using it in a multi-threaded environment, it's not implemented here just for the simplicity of showing how an ObjectPool is implemented. Using semaphores will only add some constraints on the acquire(), release(), and the initilization.
+class ObjectPool<T> {
+    private var objects: [T]
     
-    func acquire() {
-        
+    init(objects: [T]) {
+        self.objects = objects
     }
     
-    func release() {
+    func acquire() -> T?{
+        if objects.count != 0 {
+            let obj = objects.first!
+            objects.remove(at: 0)
+            return obj
+        }
         
+        return nil
+    }
+    
+    func release(object: T) {
+        objects.append(object)
     }
 }
 
-class Object {
-    
-}
+    //Using
+
+let pool = ObjectPool(objects: [1,2,3])
+let object = pool.acquire()
+let obj2 = pool.acquire()
+let obj3 = pool.acquire()
+let obj4 = pool.acquire() //No objects in the pool
+
+pool.release(object: object!)
+
