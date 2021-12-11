@@ -214,3 +214,43 @@ print(composite.children.count)
 
 anotherComposite.addChild(child: pixel)
 print(anotherComposite.children.count)
+
+
+//4. Proxy
+
+    //Implementation
+
+protocol Object {
+    func makeRequest()
+}
+
+class RealObject: Object {
+    func makeRequest() {
+        //Doing some logic
+        print("Request is received and handled from Real Object.")
+    }
+}
+
+class Proxy: Object {
+    private var realObject: RealObject?
+    
+    init(object: RealObject) {
+        self.realObject = object
+    }
+    func makeRequest() {
+        print("Proxy is trying to access object...")
+        checkObjectStatus()
+        print("Object is accessed, request sent.")
+    }
+    private func checkObjectStatus() {
+        if realObject != nil {
+            realObject?.makeRequest()
+        }
+    }
+}
+
+
+    //Using
+let realObject = RealObject()
+let proxy = Proxy(object: realObject)
+proxy.makeRequest()
