@@ -1,6 +1,6 @@
 # GoF-Swift-Design-Patterns
 
-This repo is intended to implement the known Software Design Patterns from the Gang of Four book using Swift Programming Languages.
+I created this repo to implement the known Software Design Patterns from the Gang of Four book using Swift Programming Languages.
 We have 3 types of Design Patterns:
 
 # 1. Creational Design Patterns 
@@ -10,8 +10,8 @@ That includes:
 <li> Factory Method Design Pattern (Done ✅)</li>
 <li> Abstract Factory Design Pattern (Done ✅)</li>
 <li> Builder Design Pattern (Done ✅)</li>
-<li> Prototype Design Pattern (In progress ⏳)</li>
-<li> Object-Pool Design Pattern (In progress ⏳)</li>
+<li> Prototype Design Pattern (Done ✅)</li>
+<li> Object-Pool Design Pattern (Done ✅)</li>
 </ul>
 
 # 2. Structural Design Patterns
