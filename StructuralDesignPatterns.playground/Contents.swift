@@ -254,3 +254,7 @@ class Proxy: Object {
 let realObject = RealObject()
 let proxy = Proxy(object: realObject)
 proxy.makeRequest()
+
+
+//4. Decorator
+    //Implementation
