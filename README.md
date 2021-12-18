@@ -29,10 +29,10 @@ That includes:
 # 3. Behavioral Design Patterns 
 That includes:
 <ul>
+<li> Startegy Design Pattern (Done ✅)</li>
+<li> State Design Pattern (In progress ⏳)</li>
 <li> Chain of Responsibility Design Pattern </li>
 <li> Command Design Pattern </li>
-<li> Startegy Design Pattern </li>
-<li> State Design Pattern </li>
 <li> Iterator Design Pattern </li>
 <li> Mediator Design Pattern </li>
 <li> Observer Design Pattern </li>
