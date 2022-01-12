@@ -64,4 +64,3 @@ print(firstCard.validateCard())
 let masterCardValidator = MasterCardValidator()
 let secondCard = CreditCard(holderName: "Walid", number: "123456", cvv: 112, validator: masterCardValidator)
 print(secondCard.validateCard())
-

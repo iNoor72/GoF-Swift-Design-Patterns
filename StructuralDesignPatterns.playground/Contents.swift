@@ -256,5 +256,55 @@ let proxy = Proxy(object: realObject)
 proxy.makeRequest()
 
 
-//4. Decorator
+//4. Bridge
     //Implementation
+
+protocol Implementation {
+    func operation() -> String
+}
+
+class Abstract {
+    var implementation: Implementation
+    
+    init(imp: Implementation) {
+        self.implementation = imp
+    }
+    
+    func operation() {
+        let op = implementation.operation()
+        print("Abstract base operation" + op)
+    }
+}
+
+class AnotherAbstract: Abstract {
+    override func operation() {
+        let op = implementation.operation()
+        print("Another abstract operation" + op)
+    }
+}
+
+class FirstImplementation: Implementation {
+    func operation() -> String {
+        return "First implemenation operation"
+    }
+    
+    
+}
+
+class SecondImplementation: Implementation {
+    func operation() -> String {
+        return "Second implemenation operation"
+    }
+    
+    
+}
+
+
+    //Usage
+let imp = FirstImplementation()
+let abs = Abstract(imp: imp)
+abs.operation()
+
+let imp2 = SecondImplementation()
+let anotherAbs = AnotherAbstract(imp: imp2)
+anotherAbs.operation()
